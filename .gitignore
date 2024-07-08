@@ -49,3 +49,5 @@ bower_components
 
 # TSD Debug info
 tsd-debug.log
+
+package-lock.json
