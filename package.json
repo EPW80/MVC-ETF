@@ -1,0 +1,31 @@
+{
+  "name": "etf-mvc",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node dist/server.js",
+    "fetch-data": "node dist/fetchData.js",
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "chartjs-adapter-date-fns": "^3.0.0",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "yahoo-finance": "^0.3.8",
+    "yahoo-finance2": "^2.11.3"
+  },
+  "devDependencies": {
+    "@types/body-parser": "^1.19.5",
+    "@types/ejs": "^3.1.5",
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.14.10",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.3"
+  }
+}
