@@ -1,12 +1,14 @@
 import fs from "fs";
+import path from "path";
 import { DataModel } from "./DataModel";
 
 type Trade = {
   date: string;
   symbol: string;
-  action: string;
+  action: "BUY" | "SELL";
   price: number;
   amount: number;
+  gainLoss: number;
   balance: number;
 };
 
@@ -23,14 +25,15 @@ export class TradeModel {
     symbol: string,
     shortWindow: number,
     longWindow: number,
-    initialBalance: number
+    initialBalance: number = 100000
   ) {
     const data = DataModel.getHistoricalData(symbol);
     const shortSMA: SMAData[] = [];
     const longSMA: SMAData[] = [];
-    const trades: (Trade | Summary)[] = [];
+    const trades: Trade[] = [];
     let balance = initialBalance;
     let position = 0;
+    let totalGainLoss = 0;
 
     for (let i = 0; i < data.length; i++) {
       if (i >= shortWindow - 1) {
@@ -61,34 +64,54 @@ export class TradeModel {
             action: "BUY",
             price: data[i].close,
             amount: position,
+            gainLoss: 0,
             balance: balance,
           });
         } else if (shortSMA[i]! < longSMA[i]! && position > 0) {
+          const gainLoss =
+            position * (data[i].close - trades[trades.length - 1].price);
           balance = position * data[i].close;
-          position = 0;
+          totalGainLoss += gainLoss;
           trades.push({
             date: data[i].date,
             symbol: symbol,
             action: "SELL",
             price: data[i].close,
-            amount: position,
+            amount: 0,
+            gainLoss: gainLoss,
             balance: balance,
           });
+          position = 0;
         }
       }
     }
 
     const summary: Summary = {
-      totalGainLoss: balance - initialBalance,
+      totalGainLoss: totalGainLoss,
       percentageReturn: ((balance - initialBalance) / initialBalance) * 100,
       finalBalance: balance,
     };
 
-    trades.push(summary);
-    fs.writeFileSync(
-      `./trades/${symbol}_trades.csv`,
-      trades.map((trade) => Object.values(trade).join(",")).join("\n")
-    );
+    // Generate CSV log
+    const csvHeader = "Date,Symbol,Action,Price,Amount,Gain/Loss,Balance\n";
+    const csvRows = trades
+      .map(
+        (trade) =>
+          `${trade.date},${trade.symbol},${trade.action},${trade.price},${trade.amount},${trade.gainLoss},${trade.balance}`
+      )
+      .join("\n");
+    const csvSummary = `\nSummary,,Total Gain/Loss,,Percentage Return,Current Balance\n,,${
+      summary.totalGainLoss
+    },,${summary.percentageReturn.toFixed(2)}%,${summary.finalBalance}\n`;
+    const csvContent = csvHeader + csvRows + csvSummary;
+
+    // Ensure the logs directory exists
+    const logsDir = path.resolve(__dirname, "../../logs");
+    if (!fs.existsSync(logsDir)) {
+      fs.mkdirSync(logsDir);
+    }
+
+    fs.writeFileSync(`${logsDir}/${symbol}_trades.csv`, csvContent);
     return trades;
   }
 }
