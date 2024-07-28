@@ -12,7 +12,7 @@ This project is a web application for fetching and displaying historical stock d
 
 ## Project Structure
 
-```
+```bash
 /etf-mvc
 /dist
 /controllers
@@ -43,32 +43,32 @@ README.md
 
 1. **Clone the repository:**
 
-   ```
+   ```bash
    git clone 
    cd <project>
    ```
 
 Install dependencies:
 
-```
+```bash
 npm install
 ```
 
 Compile TypeScript to JavaScript:
 
-```
+```bash
 npx tsc
 ```
 
 Fetch historical data:
 
-```
+```bash
 npm run fetch-data
 ```
 
 Start the server:
 
-```
+```bash
 npm start
 ```
 
@@ -130,6 +130,10 @@ TypeScript configuration file.
 - Chartjs-Adapter-Date-Fns - Adapter for date-fns to be used with Chart.js.
 - Yahoo-Finance2 - Yahoo Finance API for Node.js.
 - TypeScript - Typed JavaScript at Any Scale.
+
+### Demo
+
+[Loom](https://www.loom.com/share/41f2d0db831a4033995f98548d95de0c?sid=068fbfe3-31a9-460f-9086-930b6713d045)
 
 ### License
 
