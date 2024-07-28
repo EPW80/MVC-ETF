@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Stock Data</title>
-  <link rel="stylesheet" type="text/css" href="/css/style.css" />
-</head>
-<body>
-  <h1>Stock Data</h1>
-  <form id="stockForm">
-    <label for="symbol">Symbol:</label>
-    <input type="text" id="symbol" name="symbol" required />
-    <label for="startDate">Start Date:</label>
-    <input type="date" id="startDate" name="startDate" required />
-    <label for="endDate">End Date:</label>
-    <input type="date" id="endDate" name="endDate" required />
-    <button type="submit">Get Data</button>
-  </form>
-  <canvas id="chart"></canvas>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
-  <script src="/js/main.js"></script>
-</body>
+  <head>
+    <title>Stock Data</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+  </head>
+  <body>
+    <h1>Stock Data</h1>
+    <form id="stockForm">
+      <label for="symbol">Symbol:</label>
+      <input type="text" id="symbol" name="symbol" required />
+      <label for="startDate">Start Date:</label>
+      <input type="date" id="startDate" name="startDate" required />
+      <label for="endDate">End Date:</label>
+      <input type="date" id="endDate" name="endDate" required />
+      <button type="submit">Get Data</button>
+    </form>
+    <canvas id="chart"></canvas>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+    <script src="/js/main.js"></script>
+  </body>
 </html>

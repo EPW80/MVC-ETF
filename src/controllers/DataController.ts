@@ -22,12 +22,10 @@ export class DataController {
       !endDate ||
       typeof endDate !== "string"
     ) {
-      res
-        .status(400)
-        .json({
-          error:
-            "symbol, startDate, and endDate are required and must be strings",
-        });
+      res.status(400).json({
+        error:
+          "symbol, startDate, and endDate are required and must be strings",
+      });
       return;
     }
 

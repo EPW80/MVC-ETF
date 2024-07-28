@@ -1,4 +1,3 @@
-// src/yahoo-finance.d.ts
 declare module "yahoo-finance" {
   export interface HistoricalResult {
     date: Date;
