@@ -80,10 +80,10 @@ Open your browser and navigate to <http://localhost:3000>.
 
 ### Fetch stock data
 
-Enter the stock symbol (e.g., SOXL or SOXS).
-Enter the start date.
-Enter the end date.
-Click the "Get Data" button to fetch and display the data on the chart.
+- Enter the stock symbol (e.g., SOXL or SOXS).
+- Enter the start date.
+- Enter the end date.
+- Click the "Get Data" button to fetch and display the data on the chart.
 
 ### Project Files
 
