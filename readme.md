@@ -120,8 +120,6 @@ Handles data retrieval logic for stock data.
 - TypeScript Configuration
 tsconfig.json
 
-TypeScript configuration file.
-
 ### Dependencies
 
 - Express - Fast, unopinionated, minimalist web framework for Node.js.
@@ -134,7 +132,3 @@ TypeScript configuration file.
 ### Demo
 
 [Loom](https://www.loom.com/share/41f2d0db831a4033995f98548d95de0c?sid=068fbfe3-31a9-460f-9086-930b6713d045)
-
-### License
-
-This project is licensed under the MIT License.
